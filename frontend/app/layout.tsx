@@ -72,7 +72,7 @@ function Layout({ children }) {
   const chatLinks = Array.from({ length: 99 }, (_, i) => `chat-${i + 1}`);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen text-gray-400">
       {/* Left Sidebar */}
       <nav
         ref={leftSidebarRef}
@@ -129,6 +129,10 @@ function Layout({ children }) {
           isRightSidebarOpen ? "md:mr-64" : ""
         }`}
       >
+        <header className="md:hidden bg-gray-100 p-4 flex justify-between items-center">
+          <button onClick={toggleLeftSidebar}>☰</button>
+          {/* <button onClick={toggleRightSidebar}>Right Sidebar</button> */}
+        </header>
         {children}
       </main>
 
