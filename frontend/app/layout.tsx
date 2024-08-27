@@ -89,7 +89,7 @@ function Layout({ children }) {
         <p>history</p>
         <div className="overflow-y-auto max-h-96">
           {chatLinks.map((link) => (
-            <Link key={link} href={`/dash/${link}`} className="block py-2">
+            <Link key={link} href={`/chat/${link}`} className="block py-2">
               {link}
             </Link>
           ))}
