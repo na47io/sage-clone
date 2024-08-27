@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/globals.css";
+import Image from "next/image";
 
 function ProfileCard({
   username,
@@ -79,6 +80,8 @@ function Layout({ children }) {
           isLeftSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
+        <Image src="/logo.png" alt="logo" width={50} height={50} />
+        <br></br>
         <Link href="/" className="block py-2">
           discover
         </Link>
