@@ -86,15 +86,18 @@ function Layout({ children }) {
           inbox
         </Link>
         <br></br>
-        <p className="text-lg font-semibold">history</p>
+        <p>history</p>
         <div className="overflow-y-auto max-h-96">
           {chatLinks.map((link) => (
-            <Link key={link} href={`/${link}`} className="block py-2">
+            <Link key={link} href={`/dash/${link}`} className="block py-2">
               {link}
             </Link>
           ))}
         </div>
-        <Link href="/inbox" className="block py-2">
+
+        <br></br>
+
+        <Link href="/profile" className="block py-2">
           profile
         </Link>
         <ProfileCard
@@ -104,15 +107,11 @@ function Layout({ children }) {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 md:ml-64 overflow-y-auto">
-        <header className="bg-gray-100 p-4 flex justify-between items-center">
-          <button className="md:hidden" onClick={toggleLeftSidebar}>
-            ☰
-          </button>
-          <button className="md:hidden" onClick={toggleRightSidebar}>
-            Right Sidebar
-          </button>
-        </header>
+      <main
+        className={`flex-1 md:ml-64 overflow-y-auto transition-all duration-300 ${
+          isRightSidebarOpen ? "md:mr-64" : ""
+        }`}
+      >
         {children}
       </main>
 
@@ -121,7 +120,7 @@ function Layout({ children }) {
         ref={rightSidebarRef}
         className={`w-64 bg-gray-200 p-4 fixed right-0 top-0 h-full transition-transform duration-300 ease-in-out ${
           isRightSidebarOpen ? "translate-x-0" : "translate-x-full"
-        } md:translate-x-0`}
+        }`}
       >
         <h2 className="text-lg font-semibold">Right Sidebar</h2>
         {/* Add content for the right sidebar */}
