@@ -76,37 +76,51 @@ function Layout({ children }) {
       {/* Left Sidebar */}
       <nav
         ref={leftSidebarRef}
-        className={`w-64 bg-gray-800 text-white p-4 fixed h-full z-20 transition-transform duration-300 ease-in-out ${
+        className={`w-64 flex flex-col gap-4 bg-gray-800 text-white p-4 fixed h-full z-20 transition-transform duration-300 ease-in-out ${
           isLeftSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
         <Image src="/logo.png" alt="logo" width={50} height={50} />
-        <br></br>
-        <Link href="/" className="block py-2">
-          discover
-        </Link>
-        <Link href="/inbox" className="block py-2">
-          inbox
-        </Link>
-        <br></br>
-        <p>history</p>
-        <div className="overflow-y-auto max-h-96">
-          {chatLinks.map((link) => (
-            <Link key={link} href={`/chat/${link}`} className="block py-2">
-              {link}
-            </Link>
-          ))}
+
+        {/* Nav */}
+        <div className="flex flex-col gap-2">
+          <Link href="/" className="block">
+            discover
+          </Link>
+          <a href="https://nikolay-labs.github.io/blog/" className="block">
+            projects
+          </a>
+          <Link href="/inbox" className="block">
+            inbox
+          </Link>
         </div>
 
-        <br></br>
+        {/* Chat history */}
+        <div>
+          <p className="pb-1">history</p>
+          <div className="overflow-y-auto max-h-96 flex flex-col gap-2">
+            {chatLinks.map((link) => (
+              <Link
+                key={link}
+                href={`/chat/${link}`}
+                className="block hover:text-white text-gray-400"
+              >
+                {link}
+              </Link>
+            ))}
+          </div>
+        </div>
 
-        <Link href="/profile" className="block py-2">
-          profile
-        </Link>
-        <ProfileCard
-          username="Username"
-          avatar={new URL("https://example.com")}
-        />
+        {/* User profile */}
+        <div>
+          <Link href="/profile" className="block py-2">
+            profile
+          </Link>
+          <ProfileCard
+            username="Username"
+            avatar={new URL("https://example.com")}
+          />
+        </div>
       </nav>
 
       {/* Main Content */}
