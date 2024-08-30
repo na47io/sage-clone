@@ -8,7 +8,7 @@ function UserProfile() {
   );
 }
 
-export default function Profile({ children }: { children: React.ReactNode }) {
+export default function Profile() {
   // i need 2 columns, each taking up half the screen width
 
   return (
