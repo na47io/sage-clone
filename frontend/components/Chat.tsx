@@ -42,7 +42,7 @@ Gotta check that todolist again. I am probably forgetting stuff.`,
   },
 ] as Message[];
 
-const MessageBubble = ({ message }) => {
+const MessageBubble = ({ message }: { message: Message }) => {
   const renderTextWithLinks = (text) => {
     const urlRegex =
       /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
@@ -109,6 +109,12 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>(testMessages);
   const [input, setInput] = useState("");
   const messageEndRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    // focus on the input when the component mounts
+    inputRef.current?.focus();
+  });
 
   useEffect(() => {
     // Delay scroll to ensure DOM has updated
@@ -160,6 +166,7 @@ export default function Chat() {
       <div className="p-4 bg-gray-200 border-t border-gray-300">
         <div className="flex items-center">
           <input
+            ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
