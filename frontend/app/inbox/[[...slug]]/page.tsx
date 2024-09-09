@@ -28,11 +28,11 @@ function InboxChatCard() {
 
 export default function Page({ params }: { params: { slug: string } }) {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-full">
       <div className="flex-shrink-0">
         <InboxChatCard />
       </div>
-      <div className="flex-grow overflow-y-auto p-4 flex flex-col h-full">
+      <div className="flex-grow overflow-y-auto flex flex-col h-full">
         <p>Chatting to {params.slug}</p>
         <div className="flex-1 overflow-hidden">
           <Chat />

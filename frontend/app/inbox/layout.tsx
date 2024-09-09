@@ -71,11 +71,11 @@ export default function Inbox({ children }: { children: React.ReactNode }) {
   // i need 2 columns, each taking up half the screen width
 
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <div className="w-5/12 p-4">
         <InboxMenu chats={chats}></InboxMenu>
       </div>
-      <div className="w-7/12 p-4">{children}</div>
+      <div className="w-7/12 px-4 pt-4">{children}</div>
     </div>
   );
 }
