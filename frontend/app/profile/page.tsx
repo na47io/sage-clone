@@ -12,10 +12,12 @@ export default function Profile() {
   // i need 2 columns, each taking up half the screen width
 
   return (
-    <div className="flex">
-      <div className="w-8/12 p-4">
+    <div className="flex flex-row h-full">
+      <div className="w-8/12 p-4 flex h-full flex-col">
         <h1>Profile chat</h1>
-        <Chat />
+        <div className="flex-1 overflow-hidden">
+          <Chat />
+        </div>
       </div>
       <div className="w-4/12 p-4">
         <UserProfile />

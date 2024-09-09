@@ -27,15 +27,16 @@ function InboxChatCard() {
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
-  // i need two rows, i need the first to fit its content, the second to take up the rest of the space
   return (
     <div className="flex flex-col h-screen">
       <div className="flex-shrink-0">
         <InboxChatCard />
       </div>
-      <div className="flex-grow overflow-y-auto p-4">
+      <div className="flex-grow overflow-y-auto p-4 flex flex-col h-full">
         <p>Chatting to {params.slug}</p>
-        <Chat />
+        <div className="flex-1 overflow-hidden">
+          <Chat />
+        </div>
       </div>
     </div>
   );
